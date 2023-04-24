@@ -1,28 +1,34 @@
 # Asetus
+
 Configuration library for ruby with YAML/JSON/TOML backends with unified object
 access
 
 ## Install
-```
+
+```shell
  % gem install asetus
 ```
 
 ## Use
+
 ### Simple
-```
+
+```ruby
 require 'asetus'
 cfg  = Asetus.cfg
 port = cfg.server.port
 user = cfg.auth.user
 pw   = cfg.auth.password
 ```
+
 It tried to detect your software name via caller_locations if no ':name'
 argument was given.
 It automatically loads /etc/name/config and ~/.config/name/config and merges
 them together.
 
 ### Advanced
-```
+
+```ruby
 require 'asetus'
 asetus = Asetus.new name:    'mykewlapp',
                     default: {'poop'=>'xyzzy'},
@@ -46,16 +52,16 @@ asetus.user    # user only
 
 ## Reserved methods
 
-* each           - iterate all config keys in current level
-* has_key?(arg)  - check if current level has key arg
-* [arg]          - fetch arg (useful for non-literal retrieval, instead of using #send)
-* key?           - all keys have question mark version reserved, checks if key exists+true (true), exists+false (false), not-exists (nil)
-+ all object class methods
+* `each`           - iterate all config keys in current level
+* `has_key?(arg)`  - check if current level has key arg
+* `[arg]`          - fetch arg (useful for non-literal retrieval, instead of using #send)
+* `key?`           - all keys have question mark version reserved, checks if key exists+true (true), exists+false (false), not-exists (nil)
+* & all object class methods
 
 ## TODO
 
-  * should I add feature to raise on unconfigured/unset?
-  * should I always merge to 'cfg' when default/system/config is set?
+* should I add feature to raise on unconfigured/unset?
+* should I always merge to 'cfg' when default/system/config is set?
 
 ## License and Copyright
 
